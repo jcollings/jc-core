@@ -7,8 +7,12 @@
 /**
  * Load files
  */
-require_once 'functions.php';
-require_once 'shortcodes/shortcodes.php';
+add_action( 'init', 'jcc_init');
+
+function jcc_init(){
+	require_once 'functions.php';
+	require_once 'shortcodes/shortcodes.php';	
+}
 
 /**
  * Load template file from within theme folder

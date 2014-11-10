@@ -1,0 +1,49 @@
+.jcc_grid_2{
+	width: 100%;
+}
+
+.jcc_col{
+	float:left;
+}
+
+.jcc_col_wrapper{
+	margin: 5px;
+}
+
+.jcc_col_first{
+	clear:left;
+}
+
+.jcc_col_first > .jcc_col_wrapper{
+	margin-left:0;
+}
+
+.jcc_col_last > .jcc_col_wrapper{
+	margin-left:0;
+}
+
+/**
+ * Two Col Grid
+ */
+.jcc_grid_2 > .jcc_col_wrapper > .jcc_col_2, .jcc_grid_2 > .jcc_col_2{
+	width: 100%;
+}
+
+.jcc_grid_2 > .jcc_col_wrapper > .jcc_col_1, .jcc_grid_2 > .jcc_col_1{
+	width: 50%;
+}
+
+/**
+ * Three Col Grid
+ */
+.jcc_grid_3 > .jcc_col_wrapper > .jcc_col_3, .jcc_grid_3 > .jcc_col_3{
+	width: 100%;
+}
+
+.jcc_grid_3 > .jcc_col_wrapper > .jcc_col_2, .jcc_grid_3 > .jcc_col_2{
+	width: 66%;
+}
+
+.jcc_grid_3 > .jcc_col_wrapper > .jcc_col_1, .jcc_grid_3 > .jcc_col_1{
+	width: 33%;
+}
