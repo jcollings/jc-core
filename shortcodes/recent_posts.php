@@ -2,14 +2,14 @@
 add_shortcode( 'jcc_recent_posts', 'jcc_recent_posts' );
 function jcc_recent_posts($atts){
 
-	$a = shortcode_atts( array(
+	extract(shortcode_atts( array(
         'limit' => 5,
         'title' => false,
-    ), $atts );
+    ), $atts ));
 
     $posts = new WP_Query(array(
     	'post_type' => 'post',
-    	'posts_per_page' => $limit
+    	'posts_per_page' => $limit,
     ));
 
     ob_start();
