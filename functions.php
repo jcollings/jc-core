@@ -25,3 +25,12 @@ function jcc_split_string($str = '', $length = 10, $after = null){
 
 	return substr($str, 0, $count) . $after;
 }
+
+function jcc_output_wrapper($id = '', $close = false){
+
+	if($close){
+		echo '</div><!-- /'. esc_attr( $id ) .' -->';
+	}else{
+		echo '<div class="' . esc_attr( $id ) .'">';
+	}
+}
