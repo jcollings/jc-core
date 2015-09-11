@@ -27,6 +27,8 @@ function jcc_get_template_part($template = '', $vars = array()){
 
 	global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
 
+	$vars = apply_filters('jcc/get_template_part', $vars, $template);
+
 	$template_file = get_stylesheet_directory() . '/templates/'.$template.'.php';
 	if(is_file($template_file)){
 
@@ -41,4 +43,43 @@ function jcc_get_template_part($template = '', $vars = array()){
 	}
 
 	return false;	
+}
+
+function jc_core() {
+
+	global $jcc_loop_counter;
+	$jcc_loop_counter = 0;
+
+	do_action( 'jcc_theme_init' );
+	get_header();
+
+	do_action( 'jcc_before_theme_output' ); ?>
+
+	<?php if ( have_posts() ) : ?>
+
+		<?php do_action( 'jcc_before_loop' ); ?>
+
+		<?php while ( have_posts() ): the_post(); $jcc_loop_counter++; ?>
+
+			<?php do_action( 'jcc_before_theme_content' ); ?>
+
+			<?php
+			get_template_part( 'content', apply_filters( 'jcc_override_content', get_post_format() ) );
+			?>
+
+			<?php do_action( 'jcc_after_theme_content' ); ?>
+
+		<?php endwhile; ?>
+
+		<?php do_action( 'jcc_after_loop' ); ?>
+
+	<?php else: ?>
+		<?php get_template_part( 'content', apply_filters( 'jcc_override_content_empty', 'none' ) ); ?>
+
+	<?php endif; ?>
+
+	<?php do_action( 'jcc_after_theme_output' ); ?>
+
+	<?php
+	get_footer();
 }
