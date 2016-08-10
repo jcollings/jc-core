@@ -45,6 +45,11 @@ function jcc_get_template_part($template = '', $vars = array()){
 	return false;	
 }
 
+function jcc_display_content(){
+	get_template_part( 'content', apply_filters( 'jcc_override_content', get_post_format() ) );
+}
+add_action('jcc_content', 'jcc_display_content');
+
 function jc_core() {
 
 	global $jcc_loop_counter;
@@ -64,7 +69,7 @@ function jc_core() {
 			<?php do_action( 'jcc_before_theme_content' ); ?>
 
 			<?php
-			get_template_part( 'content', apply_filters( 'jcc_override_content', get_post_format() ) );
+			do_action('jcc_content');
 			?>
 
 			<?php do_action( 'jcc_after_theme_content' ); ?>
