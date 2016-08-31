@@ -11,7 +11,7 @@ add_action( 'init', 'jcc_init');
 
 function jcc_init(){
 	require_once 'functions.php';
-	require_once 'shortcodes/shortcodes.php';	
+	//require_once 'shortcodes/shortcodes.php';
 }
 
 /**
