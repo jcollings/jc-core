@@ -35,6 +35,26 @@ function jcc_output_wrapper($id = '', $close = false){
 	}
 }
 
+function jcc_display_acf_image($image, $image_size = 'full', $classes = array()){
+
+	if($image){
+		$image_alt = $image['alt'];
+		$image_title = $image['title'];
+		if(isset($image['sizes'][$image_size])) {
+			$image_src    = $image['sizes'][ $image_size ];
+			$image_width  = $image['sizes'][ $image_size . '-width' ];
+			$image_height = $image['sizes'][ $image_size . '-height' ];
+		}else{
+			$image_src = $image['url'];
+			$image_width = $image['width'];
+			$image_height = $image['height'];
+		}
+		?>
+		<img src="<?php echo $image_src; ?>" alt="<?php echo $image_alt; ?>" title="<?php echo $image_title; ?>" width="<?php echo $image_width; ?>" height="<?php echo $image_height; ?>" class="<?php echo implode(' ', $classes); ?>">
+		<?php
+	}
+}
+
 /**
  * Pagination
  */

@@ -29,7 +29,22 @@ function jcc_get_template_part($template = '', $vars = array()){
 
 	$vars = apply_filters('jcc/get_template_part', $vars, $template);
 
+	// check child theme
 	$template_file = get_stylesheet_directory() . '/templates/'.$template.'.php';
+	if(is_file($template_file)){
+
+		if ( is_array( $wp_query->query_vars ) )
+			extract( $wp_query->query_vars, EXTR_SKIP );
+
+		if(is_array($vars))
+			extract($vars);
+
+		require $template_file;
+		return true;
+	}
+
+	// check parent theme
+	$template_file = get_template_directory() . '/templates/'.$template.'.php';
 	if(is_file($template_file)){
 
 		if ( is_array( $wp_query->query_vars ) )
